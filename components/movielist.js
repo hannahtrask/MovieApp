@@ -51,6 +51,8 @@ class MovieList extends React.Component {
 					</button>
 					<h1>{this.state.count}</h1>
 				</div> */}
+                {/* passing props in class components, just use this.props.<variable that you passed>*/}
+                <h1>{this.props.count}</h1>
 				<div className='col-lg-4 col-md-6 mb-4'>
 					<div className='card h-100'>
 						<a href='#'>

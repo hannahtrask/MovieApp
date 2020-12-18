@@ -1,22 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const SideMenu = () => {
-    const [count, setCount] = useState(0);
-    
-    // // under the hood
-    // const stateArray = useState(0)
-    // console.log('this is the useState array:', stateArray)
-
-	const increment = () => {
-        const newCount = count +1
-		setCount(newCount);
-	};
-
-	const decrement = () => {
-        const newCount = count -1
-		setCount(newCount);
-	};
-
+const SideMenu = (props) => {
 	return (
 		<>
 			<h1 className='my-4'>Shop Name</h1>
@@ -32,13 +16,7 @@ const SideMenu = () => {
 				</a>
 			</div>
 			<div>
-				<button className='btn btn-dark' onClick={increment}>
-					Increment Number
-				</button>
-				<button className='btn btn-dark' onClick={decrement}>
-					Decrement Number
-				</button>
-                <h1>{count}</h1>
+				<h1>{props.count}</h1>
 			</div>
 		</>
 	);
