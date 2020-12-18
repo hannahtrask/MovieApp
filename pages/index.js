@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Navbar from '../components/navbar';
 import SideMenu from '../components/sidemenu';
@@ -6,18 +6,16 @@ import Carousel from '../components/carousel';
 import MovieList from '../components/movielist';
 import Footer from '../components/footer';
 
+import { getMovies } from '../actions/index';
+
 const Home = () => {
-	const [count, setCount] = useState(0);
+	const [movies, setMovies] = useState([]);
 
-	const increment = () => {
-		const newCount = count + 1;
-		setCount(newCount);
-	};
-
-	const decrement = () => {
-		const newCount = count - 1;
-		setCount(newCount);
-	};
+	// this uses a promise to access the movies from index.js in actions/index.js
+	// this is asynchronous because of the promise written in that file
+	getMovies().then((movies) => {
+		setMovies(movies);
+	});
 
 	return (
 		<div>
@@ -46,26 +44,20 @@ const Home = () => {
 			<Navbar />
 			<div className='home-page'>
 				<div className='container'>
-					<button className='btn btn-dark' onClick={increment}>
+					{/* <button className='btn btn-dark' onClick={increment}>
 						Increment Number
 					</button>
 					<button className='btn btn-dark' onClick={decrement}>
 						Decrement Number
-					</button>
+					</button> */}
 					<div className='row'>
 						<div className='col-lg-3'>
-							<SideMenu
-								count={count}
-								appName={'Movie DB'}
-								clickHandler={() => {
-									console.log('Hello World');
-								}}
-							/>
+							<SideMenu appName={'Movie DB'} />
 						</div>
 						<div className='col-lg-9'>
 							<Carousel />
 							<div className='row'>
-								<MovieList count={count} />
+								<MovieList movies={movies} />
 							</div>
 						</div>
 					</div>
