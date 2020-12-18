@@ -54,7 +54,13 @@ const Home = () => {
 					</button>
 					<div className='row'>
 						<div className='col-lg-3'>
-							<SideMenu count={count} />
+							<SideMenu
+								count={count}
+								appName={'Movie DB'}
+								clickHandler={() => {
+									console.log('Hello World');
+								}}
+							/>
 						</div>
 						<div className='col-lg-9'>
 							<Carousel />
