@@ -2,8 +2,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Setup Instructions
 
-First, run the development server:
-
 1. ```Fork``` [this repository](https://github.com/hannahtrask/MovieApp.git)
 2. ```Clone``` it down to your local machine with ```<your SSH Key>```
 3. Change into your directory with ```cd movie-app```
