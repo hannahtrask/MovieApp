@@ -1,9 +1,56 @@
 import React from 'react';
 
 class MovieList extends React.Component {
+	// state = {
+	//     count: 0
+	// }
+
+	// // constructor does the same thing as the state
+	// constructor() {
+	// 	super();
+
+	// 	this.state = {
+	// 		count: 0,
+	//     };
+	//     // if you aren't using arrow functions, you MUST use bind to bind the self to the function
+	//     this.increment = this.increment.bind(this)
+	// }
+
+	// increment () {
+	// 	//alert('incrementing number')
+	// 	// const count = this.state.count
+	// 	const { count } = this.state;
+	// 	//debugger;
+	// 	this.setState({
+	// 		count: count + 1,
+	// 	});
+	// };
+
+	// decrement = () => {
+	// 	//alert('decrementing number')
+	// 	const { count } = this.state;
+	// 	//debugger;
+	// 	this.setState({
+	// 		count: count - 1,
+	// 	});
+	// };
+
+	// use THIS keyword to call in render function, this just refers to the self, similar to python
+
 	render() {
+		// DEBUGGER!!!
+		//debugger;
 		return (
 			<>
+				{/* <div>
+					<button onClick={()=>this.increment()} className='btn btn-dark'>
+						Increment Number
+					</button>
+					<button onClick={this.decrement} className='btn btn-dark'>
+						Decrement Number
+					</button>
+					<h1>{this.state.count}</h1>
+				</div> */}
 				<div className='col-lg-4 col-md-6 mb-4'>
 					<div className='card h-100'>
 						<a href='#'>
