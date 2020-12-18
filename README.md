@@ -4,12 +4,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, run the development server:
 
-    1. ```Fork``` [this repository](https://github.com/hannahtrask/MovieApp.git)
-    2. ```Clone``` it down to your local machine with ```<your SSH Key>```
-    3. Change into your directory with ```cd movie-app```
-    4. Run ```npm install``` to compile the application
-    5. Run ```npm start``` or ```yarn dev``` to see the app running locally
-    6. run ```<your text editor> .``` to see the code in your text editor
+1. ```Fork``` [this repository](https://github.com/hannahtrask/MovieApp.git)
+2. ```Clone``` it down to your local machine with ```<your SSH Key>```
+3. Change into your directory with ```cd movie-app```
+4. Run ```npm install``` to compile the application
+5. Run ```npm start``` or ```yarn dev``` to see the app running locally
+6. run ```<your text editor> .``` to see the code in your text editor
 
 ## Learn More
 
