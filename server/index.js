@@ -8,13 +8,15 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+const moviesData = require('./movies.json')
+
 app.prepare().then(() => {
 	const server = express();
 	// THIS IS A MIDDLEWARE!
 	server.use(bodyParser.json());
-	
+
 	server.get('/api/v1/movies', (req, res) => {
-		res.json({ msg: 'message' });
+		res.json(moviesData);
 	});
 
 	server.get('/faq', (req, res) => {
@@ -30,7 +32,8 @@ app.prepare().then(() => {
 	// MOST COMMON POST, PATCH, DELETE!
 	server.post('/api/v1/movies', (req, res) => {
 		const movie = req.body;
-		res.json({ msg: 'posting' });
+		console.log(JSON.stringify(movie))
+		res.json({...movie});
 	});
 	server.patch('/api/v1/movies/:id', (req, res) => {
 		const id = req.params.id;
