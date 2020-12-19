@@ -41,7 +41,7 @@ app.prepare().then(() => {
 		const movieIndex = moviesData.find((movie) => movie.id === id);
 		// gets the movie by the index
 		const movie = moviesData[movieIndex];
-		return res.json(movie)
+		return res.json(movie);
 	});
 
 	server.delete('/api/v1/movies/:id', (req, res) => {
