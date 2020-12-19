@@ -46,6 +46,26 @@ const MOVIE_DATA = [
 	},
 ];
 
+const CATEGORY_DATA = [
+	{id: '1', genre: 'drama'},
+	{id: '2', genre: 'action'},
+	{id: '3', genre: 'adventure'}
+]
+
+// get categories function
+// get categories on index page
+// provide it to side menu
+// link side menu to category page
+
+export const getCategories = () => {
+	return new Promise((resolve, reject)=>{
+		setTimeout(()=>{
+			resolve(CATEGORY_DATA)
+			reject('Cannot fetch category data :(')
+		}, 50)
+	})
+}
+
 export const getMovies = () => {
 	// 2 vals, first is function, second is time in milliseconds
 	return new Promise((resolve, reject) => {
@@ -54,7 +74,7 @@ export const getMovies = () => {
 		// HYDRATION
 		setTimeout(() => {
 			resolve(MOVIE_DATA);
-			reject('Cannot fetch data :(');
+			reject('Cannot fetch movie data :(');
 		}, 2000);
 	});
 };

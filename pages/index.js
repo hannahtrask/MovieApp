@@ -3,7 +3,7 @@ import SideMenu from '../components/sidemenu';
 import Carousel from '../components/carousel';
 import MovieList from '../components/movielist';
 
-import { getMovies } from '../actions/index';
+import { getCategories, getMovies } from '../actions/index';
 
 const Home = (props) => {
 	// 	const [movies, setMovies] = useState([]);
@@ -35,7 +35,7 @@ const Home = (props) => {
 					</button> */}
 				<div className='row'>
 					<div className='col-lg-3'>
-						<SideMenu appName={'Movie DB'} />
+						<SideMenu appName={'Movie DB'} categories={props.categories} />
 					</div>
 					<div className='col-lg-9'>
 						<Carousel images={props.images} />
@@ -60,7 +60,14 @@ Home.getInitialProps = async () => {
 			name: movie.name
 		};
 	});
-	return { movies, images };
+	const resCats = await getCategories();
+	const categories = resCats.map((cat)=> {
+		return {
+			id: cat.id,
+			name: cat.genre
+		}
+	})
+	return { movies, images, categories };
 };
 
 // // REFACTORED AS CLASS COMPONENT

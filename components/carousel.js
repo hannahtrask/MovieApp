@@ -42,6 +42,7 @@ const Carousel = ({ images }) => {
 				.d-block {
 					max-height: 500px;
 					margin: 0 auto;
+					border-radius: 5px;
 				}
 			`}</style>
 		</div>
