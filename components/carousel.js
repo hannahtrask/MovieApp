@@ -17,7 +17,7 @@ const Carousel = ({ images }) => {
 
 			<div className='carousel-inner' role='listbox'>
 				{images.map((img, index) => (
-					<div className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+					<div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={img.index} >
 						<img className='d-block img-fluid' src={img.image} alt={img.name} />
 					</div>
 				))}
