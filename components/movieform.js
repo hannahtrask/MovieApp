@@ -4,6 +4,10 @@ const MovieForm = ({ handleFormSubmit }) => {
 	const [form, setForm] = useState({
 		name: '',
 		description: '',
+		rating: '',
+		image: '',
+		cover: '',
+		long: '',
 	});
 
 	const handleChange = (e) => {
