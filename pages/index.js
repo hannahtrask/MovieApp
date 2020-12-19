@@ -38,7 +38,7 @@ const Home = (props) => {
 						<SideMenu appName={'Movie DB'} />
 					</div>
 					<div className='col-lg-9'>
-						<Carousel />
+						<Carousel images={props.images} />
 						<div className='row'>
 							<MovieList movies={props.movies} />
 						</div>
@@ -50,10 +50,17 @@ const Home = (props) => {
 };
 // this is outside the functional component, and MUST be async
 // this will get props before page load server-side
-// fast!!!!
+// fast!
 Home.getInitialProps = async () => {
 	const movies = await getMovies();
-	return { movies };
+	const images = movies.map((movie) => {
+		return {
+			id: `image-${movie.id}`,
+			image: movie.cover,
+			name: movie.name
+		};
+	});
+	return { movies, images };
 };
 
 // // REFACTORED AS CLASS COMPONENT
