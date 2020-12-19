@@ -37,11 +37,12 @@ const MOVIE_DATA = [
 export const getMovies = () => {
 	// 2 vals, first is function, second is time in milliseconds
 	return new Promise((resolve, reject) => {
-        // this is a promise
-        // this will speed up your site!!
-        // HYDRATION
+		// this is a promise
+		// this will speed up your site!!
+		// HYDRATION
 		setTimeout(() => {
-			resolve(MOVIE_DATA);
+            //resolve(MOVIE_DATA);
+            reject('Cannot fetch data :(');
 		}, 2000);
 	});
 };
