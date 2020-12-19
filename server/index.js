@@ -8,7 +8,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const moviesData = require('./movies.json')
+const moviesData = require('./movies.json');
 
 app.prepare().then(() => {
 	const server = express();
@@ -32,13 +32,18 @@ app.prepare().then(() => {
 	// MOST COMMON POST, PATCH, DELETE!
 	server.post('/api/v1/movies', (req, res) => {
 		const movie = req.body;
-		console.log(JSON.stringify(movie))
-		res.json({...movie});
+		console.log(JSON.stringify(movie));
+		res.json({ ...movie });
 	});
-	server.patch('/api/v1/movies/:id', (req, res) => {
+	server.get('/api/v1/movies/:id', (req, res) => {
 		const id = req.params.id;
-		res.json({ msg: `updating ${id}` });
+		// gets the  index of the movie
+		const movieIndex = moviesData.find((movie) => movie.id === id);
+		// gets the movie by the index
+		const movie = moviesData[movieIndex];
+		return res.json(movie)
 	});
+
 	server.delete('/api/v1/movies/:id', (req, res) => {
 		const id = req.params.id;
 		res.json({ msg: `deleting ${id}` });
