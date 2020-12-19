@@ -2,8 +2,7 @@ const Modal = (props) => {
 	let closeButton = null;
 
 	const submitModal = () => {
-		//alert('submitting modal');
-		closeButton.click();
+        closeButton.click();
 	};
 
 	return (
@@ -46,12 +45,14 @@ const Modal = (props) => {
 								data-dismiss='modal'>
 								Close
 							</button>
-							<button
-								type='button'
-								className='btn btn-primary'
-								onClick={submitModal}>
-								Save changes
-							</button>
+							{props.hasSubmit && (
+								<button
+									type='button'
+									className='btn btn-primary'
+									onClick={submitModal}>
+									Save changes
+								</button>
+							)}
 						</div>
 					</div>
 				</div>

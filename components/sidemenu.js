@@ -1,13 +1,18 @@
 import React from 'react';
 import Modal from './modal';
 import MovieForm from './movieform';
+import { createMovie } from '../actions/index';
 
 const SideMenu = ({ categories, appName }) => {
+	const handleCreateMovie = (movie) => {
+		createMovie(movie).then((movies) => console.log(JSON.stringify(movies)));
+	};
+
 	return (
 		<>
 			<h1 className='my-4'>{appName}</h1>
-			<Modal>
-				<MovieForm />
+			<Modal hasSubmit={false}>
+				<MovieForm handleFormSubmit={handleCreateMovie} />
 			</Modal>
 			<br />
 			<br />
