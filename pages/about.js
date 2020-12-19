@@ -30,6 +30,7 @@ import React from 'react';
 // class component
 class About extends React.Component {
 	// this function is necessary in a class component
+	 
 	render() {
 		return <h1>about page class component style</h1>;
 	}

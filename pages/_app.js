@@ -1,18 +1,20 @@
 import App from 'next/app';
 import Head from 'next/Head';
 import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 
 class MovieApp extends App {
+	// EXECUTE getInitialProps() here
+	static async getInitialProps(appCtx) {
+    // executing get initial props of page navigated to
+    // this is a universal service to bring props to a page
+    const appProps = await App.getInitialProps(appCtx);
+		return { ...appProps };
+	}
+
 	render() {
 		const { Component, pageProps } = this.props;
-		// console.log('this is this.props', this.props)
-		// console.log('this is pageProps', pageProps)
-		// console.log('this is component', Component)
-
-		// EXECUTE getInitialProps() here
-
 		// component holds the page you are navigating to
-
 		return (
 			<div>
 				<Head>
@@ -40,6 +42,7 @@ class MovieApp extends App {
 				<div className='base-page'>
 					<Component {...pageProps} />
 				</div>
+				<Footer />
 				<style jsx>
 					{`
 						.base-page {

@@ -2,7 +2,6 @@ import React from 'react';
 import SideMenu from '../components/sidemenu';
 import Carousel from '../components/carousel';
 import MovieList from '../components/movielist';
-import Footer from '../components/footer';
 
 import { getMovies } from '../actions/index';
 
@@ -46,7 +45,6 @@ const Home = (props) => {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</div>
 	);
 };
