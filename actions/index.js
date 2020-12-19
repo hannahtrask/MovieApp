@@ -41,7 +41,7 @@ export const getMovies = () => {
 		// this will speed up your site!!
 		// HYDRATION
 		setTimeout(() => {
-            //resolve(MOVIE_DATA);
+            resolve(MOVIE_DATA);
             reject('Cannot fetch data :(');
 		}, 2000);
 	});
