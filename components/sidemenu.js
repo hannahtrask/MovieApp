@@ -25,7 +25,7 @@ const SideMenu = ({ categories, appName }) => {
 			<div className='list-group'>
 				{categories &&
 					categories.map((category) => (
-						<a href='#' className='list-group-item'>
+						<a href='#' className='list-group-item' key={category.name}>
 							{category.name.toUpperCase()}
 						</a>
 					))}

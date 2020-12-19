@@ -11,13 +11,16 @@ const Carousel = ({ images }) => {
 					<li
 						data-target='#carouselExampleIndicators'
 						data-slide-to={index}
-						className={index === 0 ? 'active' : ''}></li>
+						className={index === 0 ? 'active' : ''}
+						key={index}></li>
 				))}
 			</ol>
 
 			<div className='carousel-inner' role='listbox'>
 				{images.map((img, index) => (
-					<div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={img.index} >
+					<div
+						className={`carousel-item ${index === 0 ? 'active' : ''}`}
+						key={index}>
 						<img className='d-block img-fluid' src={img.image} alt={img.name} />
 					</div>
 				))}

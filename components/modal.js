@@ -18,7 +18,7 @@
 // 			<div
 // 				className='modal fade'
 // 				id='exampleModal'
-// 				tabindex='-1'
+// 				tabIndex='-1'
 // 				role='dialog'
 // 				aria-labelledby='exampleModalLabel'
 // 				aria-hidden='true'>
@@ -83,7 +83,7 @@ class Modal extends React.Component {
 			<>
 				<button
 					type='button'
-					class='btn btn-primary'
+					className='btn btn-primary'
 					data-toggle='modal'
 					data-target='#exampleModal'>
 					Add Movie
@@ -92,7 +92,7 @@ class Modal extends React.Component {
 				<div
 					className='modal fade'
 					id='exampleModal'
-					tabindex='-1'
+					tabIndex='-1'
 					role='dialog'
 					aria-labelledby='exampleModalLabel'
 					aria-hidden='true'>

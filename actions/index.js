@@ -91,6 +91,9 @@ export const getMovieById = (id) => {
 
 export const createMovie = (movie) => {
 	return new Promise((resolve, reject) => {
+		// create an id for the movie
+		movie.id = Math.random().toString(36).substr(2, 7)
+		// push that data to the movie
 		MOVIE_DATA.push(movie)
 		setTimeout(() => {
 			resolve(MOVIE_DATA);
