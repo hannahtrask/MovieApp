@@ -38,9 +38,11 @@ app.prepare().then(() => {
 	server.get('/api/v1/movies/:id', (req, res) => {
 		const id = req.params.id;
 		// gets the  index of the movie
-		const movieIndex = moviesData.find((movie) => movie.id === id);
+		const movieIndex = moviesData.find((movie) => movie.id);
+		console.log(movieIndex)
 		// gets the movie by the index
 		const movie = moviesData[movieIndex];
+		console.log(movie)
 		return res.json(movie);
 	});
 

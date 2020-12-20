@@ -36,15 +36,15 @@ export const getCategories = () => {
 // 	});
 // };
 
-// export const getMovieById = (id) => {
-// 	return new Promise((resolve, reject) => {
-// 		// gets the  index of the movie
-// 		const movieIndex = MOVIE_DATA.findIndex((movie) => movie.id === id);
-// 		// gets the movie by the index
-// 		const movie = MOVIE_DATA[movieIndex];
-// 		setTimeout(() => resolve(movie), 50);
-// 	});
-// };
+// // export const getMovieById = (id) => {
+// // 	return new Promise((resolve, reject) => {
+// // 		//gets the  index of the movie
+// // 		const movieIndex = MOVIE_DATA.findIndex((movie) => movie.id === id);
+// // 		//gets the movie by the index
+// // 		const movie = MOVIE_DATA[movieIndex];
+// // 		setTimeout(() => resolve(movie), 50);
+// // 	});
+// // };
 
 export const getMovies = () => {
 	return axios.get(`${BASE_URL}/api/v1/movies`).then((res) => {
@@ -54,9 +54,7 @@ export const getMovies = () => {
 };
 
 export const getMovieById = (id) => {
-	return axios.get(`${BASE_URL}/api/v1/movies/${id}`).then((res) => {
-		console.log(res)
-	});
+	return axios.get(`${BASE_URL}/api/v1/movies/${id}`).then((res) => res.data);
 };
 
 export const createMovie = (movie) => {

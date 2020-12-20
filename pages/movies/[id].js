@@ -1,22 +1,21 @@
 import { getMovieById } from '../../actions/index';
+import { useRouter } from 'next/router';
 
 const Movie = (props) => {
-	const { movie } = props;
-
 	return (
 		<div className='container'>
 			<div className='jumbotron'>
-				<h1 className='display-4'>{movie.name}</h1>
-				<p className='lead'>{movie.description}</p>
+				<h1 className='display-4'>{}</h1>
+				<p className='lead'>{}</p>
 				<hr className='my-4' />
-				<p>{movie.genre}</p>
+				<p>{}</p>
 				<p className='lead'>
 					<a className='btn btn-primary btn-lg' href='#' role='button'>
 						Learn more
 					</a>
 				</p>
 			</div>
-			<p className='desc-text'>{movie.long}</p>
+			<p className='desc-text'>{}</p>
 			<style jsx>
 				{`
 					.desc-text {
@@ -29,7 +28,7 @@ const Movie = (props) => {
 	);
 };
 
-Movie.getInitialProps = async ({ query }) => {
+Movie.getInitialProps = async ({query}) => {
 	const movie = await getMovieById(query.id);
 	return { movie };
 };
