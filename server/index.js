@@ -2,7 +2,7 @@
 
 const next = require('next');
 const express = require('express');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -13,10 +13,20 @@ const moviesData = require('./movies.json');
 app.prepare().then(() => {
 	const server = express();
 	// THIS IS A MIDDLEWARE!
-	server.use(bodyParser.json());
+	server.use(express.json());
 
 	server.get('/api/v1/movies', (req, res) => {
 		res.json(moviesData);
+	});
+
+	server.get('/api/v1/movies/:id', (req, res) => {
+		const id = req.params.id;
+		//console.log(id)
+		// gets the  index of the movie
+		const movie = moviesData.find((movie) => movie.id);
+		res.json(movie)
+		//console.log(movie)
+		// gets the movie by the index
 	});
 
 	server.get('/faq', (req, res) => {
@@ -34,16 +44,6 @@ app.prepare().then(() => {
 		const movie = req.body;
 		console.log(JSON.stringify(movie));
 		res.json({ ...movie });
-	});
-	server.get('/api/v1/movies/:id', (req, res) => {
-		const id = req.params.id;
-		// gets the  index of the movie
-		const movieIndex = moviesData.find((movie) => movie.id);
-		console.log(movieIndex)
-		// gets the movie by the index
-		const movie = moviesData[movieIndex];
-		console.log(movie)
-		return res.json(movie);
 	});
 
 	server.delete('/api/v1/movies/:id', (req, res) => {
