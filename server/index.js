@@ -23,7 +23,7 @@ app.prepare().then(() => {
 		const id = req.params.id;
 		//console.log(id)
 		// gets the  index of the movie
-		const movie = moviesData.find((movie) => movie.id);
+		const movie = moviesData.find((movie) => movie.id===id);
 		res.json(movie)
 		//console.log(movie)
 		// gets the movie by the index
