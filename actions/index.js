@@ -46,11 +46,14 @@ export const getCategories = () => {
 // // 	});
 // // };
 
+// export const getMovies = () => {
+// 	return axios.get(`${BASE_URL}/api/v1/movies`).then((res) => {
+// 		//axios returns a Promise
+// 		return res.data;
+// 	});
+// };
 export const getMovies = () => {
-	return axios.get(`${BASE_URL}/api/v1/movies`).then((res) => {
-		//axios returns a Promise
-		return res.data;
-	});
+	return axios.get(`${BASE_URL}/api/v1/movies`).then((res) => res.data);
 };
 
 export const getMovieById = (id) => {

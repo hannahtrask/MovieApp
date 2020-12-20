@@ -28,9 +28,9 @@ const Movie = (props) => {
 	);
 };
 
-Movie.getInitialProps = async ({query}) => {
-	const movie = await getMovieById(query.id);
-	return { movie };
-};
+// Movie.getInitialProps = async () => {
+// 	// const movie = await getMovieById(query.id);
+// 	// return { movie };
+// };
 
 export default Movie;
