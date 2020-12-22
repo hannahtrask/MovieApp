@@ -42,10 +42,6 @@ app.prepare().then(() => {
 		return handle(req, res);
 	});
 
-	server.post('*', (req, res) => {
-		return handle(req, res);
-	});
-
 	// MOST COMMON POST, PATCH, DELETE!
 	server.post('/api/v1/movies', (req, res) => {
 		// ADD ID
