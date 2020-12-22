@@ -53,19 +53,31 @@ app.prepare().then(() => {
 		const stringifiedData = JSON.stringify(moviesData, null, 2);
 
 		// 3 vals, path, data itself, and callback func to handle error
-		fs.writeFile(pathToFile, stringifiedData, (err)=>{
+		fs.writeFile(pathToFile, stringifiedData, (err) => {
 			if (err) {
-				return res.status(422).send(err)
+				return res.status(422).send(err);
 			}
-			return res.json('Movie successfully added :)')
-		})
+			return res.json('Movie successfully added :)');
+		});
 
 		// return res.json({ ...movie });
 	});
 
 	server.delete('/api/v1/movies/:id', (req, res) => {
 		const id = req.params.id;
-		res.json({ msg: `deleting ${id}` });
+		const movieIndex = moviesData.findIndex((movie) => movie.id === id);
+		moviesData.splice(movieIndex, 1);
+
+		const pathToFile = path.join(__dirname, filePath);
+		const stringifiedData = JSON.stringify(moviesData, null, 2);
+
+		// 3 vals, path, data itself, and callback func to handle error
+		fs.writeFile(pathToFile, stringifiedData, (err) => {
+			if (err) {
+				return res.status(422).send(err);
+			}
+			return res.json('Movie successfully added :)');
+		});
 	});
 
 	const PORT = process.env.PORT || 3000;

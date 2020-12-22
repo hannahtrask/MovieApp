@@ -16,7 +16,7 @@ const MovieForm = ({ handleFormSubmit }) => {
 			...form,
 			[name]: e.target.value,
 		});
-		console.log(form);
+		//console.log(form);
 	};
 
 	const handleGenre = (e) => {
