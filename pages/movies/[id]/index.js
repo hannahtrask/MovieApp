@@ -1,4 +1,4 @@
-import { getMovieById, deleteMovie } from '../../actions/index';
+import { getMovieById, deleteMovie } from '../../../actions/index';
 import { useRouter } from 'next/router';
 
 const Movie = ({ movie }) => {
@@ -8,7 +8,7 @@ const Movie = ({ movie }) => {
 
 	const handleDeleteMovie = (id) => {
 		deleteMovie(id).then(() => {});
-		router.push('/')
+		router.push('/');
 	};
 	return (
 		<div className='container'>
@@ -18,7 +18,11 @@ const Movie = ({ movie }) => {
 				<hr className='my-4' />
 				<p>{movie.description}</p>
 				<p className='lead'>
-					<button onClick={()=>handleDeleteMovie(id)} className='btn btn-danger btn-lg mr-1' href='#' role='button'>
+					<button
+						onClick={() => handleDeleteMovie(id)}
+						className='btn btn-danger btn-lg mr-1'
+						href='#'
+						role='button'>
 						delete movie from list
 					</button>
 				</p>
