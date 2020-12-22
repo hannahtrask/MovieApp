@@ -8,7 +8,10 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const moviesData = require('./movies.json');
+const fs = require('fs');
+const path = require('path');
+const filePath = './movies.json';
+const moviesData = require(filePath);
 
 app.prepare().then(() => {
 	const server = express();
@@ -23,8 +26,8 @@ app.prepare().then(() => {
 		const id = req.params.id;
 		//console.log(id)
 		// gets the  index of the movie
-		const movie = moviesData.find((movie) => movie.id===id);
-		res.json(movie)
+		const movie = moviesData.find((movie) => movie.id === id);
+		res.json(movie);
 		//console.log(movie)
 		// gets the movie by the index
 	});
@@ -41,9 +44,23 @@ app.prepare().then(() => {
 
 	// MOST COMMON POST, PATCH, DELETE!
 	server.post('/api/v1/movies', (req, res) => {
+		// ADD ID
 		const movie = req.body;
-		console.log(JSON.stringify(movie));
-		res.json({ ...movie });
+		//console.log(JSON.stringify(movie));
+		moviesData.push(movie);
+
+		const pathToFile = path.join(__dirname, filePath);
+		const stringifiedData = JSON.stringify(moviesData, null, 2);
+
+		// 3 vals, path, data itself, and callback func to handle error
+		fs.writeFile(pathToFile, stringifiedData, (err)=>{
+			if (err) {
+				return res.status(422).send(err)
+			}
+			return res.json('Movie successfully added :)')
+		})
+
+		// return res.json({ ...movie });
 	});
 
 	server.delete('/api/v1/movies/:id', (req, res) => {

@@ -1,15 +1,18 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import Modal from './modal';
 import MovieForm from './movieform';
 import { createMovie } from '../actions/index';
 
 const SideMenu = ({ categories, appName }) => {
 	let modal = null;
+	const router = useRouter();
 
 	const handleCreateMovie = (movie) => {
-		createMovie(movie).then((movies) => console.log(JSON.stringify(movies)));
-		// close modal after create!
-		modal.closeModal()
+		createMovie(movie).then((movies) => {
+			modal.closeModal();
+			router.push('/');
+		});
 	};
 
 	// can only access class components
@@ -17,7 +20,7 @@ const SideMenu = ({ categories, appName }) => {
 	return (
 		<>
 			<h1 className='my-4'>{appName}</h1>
-			<Modal hasSubmit={false} ref={ele => modal = ele}>
+			<Modal hasSubmit={false} ref={(ele) => (modal = ele)}>
 				<MovieForm handleFormSubmit={handleCreateMovie} />
 			</Modal>
 			<br />
