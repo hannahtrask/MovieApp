@@ -10,6 +10,7 @@ const Movie = ({ movie }) => {
 		deleteMovie(id).then(() => {});
 		router.push('/');
 	};
+
 	return (
 		<div className='container'>
 			<div className='jumbotron'>

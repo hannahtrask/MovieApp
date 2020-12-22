@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SideMenu from '../components/sidemenu';
 import Carousel from '../components/carousel';
 import MovieList from '../components/movielist';
@@ -24,6 +24,14 @@ const Home = (props) => {
 	// 		// any time something in the array changes, the function will run again
 	// 	}, []);
 
+	// this is to filter for movies associated with certain category
+	const [filter, setFilter] = useState('')
+
+	const changeCategory = (category) => {
+		// alert(`changing to ${category}`);
+		setFilter(category)
+	};
+
 	return (
 		<div>
 			<div className='container'>
@@ -35,7 +43,7 @@ const Home = (props) => {
 					</button> */}
 				<div className='row'>
 					<div className='col-lg-3'>
-						<SideMenu appName={'Movie DB'} categories={props.categories} />
+						<SideMenu appName={'Movie DB'} categories={props.categories} changeCategory={changeCategory} activeCategory={filter} />
 					</div>
 					<div className='col-lg-9'>
 						<Carousel images={props.images} />
@@ -57,16 +65,16 @@ Home.getInitialProps = async () => {
 		return {
 			id: `image-${movie.id}`,
 			image: movie.cover,
-			name: movie.name
+			name: movie.name,
 		};
 	});
 	const resCats = await getCategories();
-	const categories = resCats.map((cat)=> {
+	const categories = resCats.map((cat) => {
 		return {
 			id: cat.id,
-			name: cat.genre
-		}
-	})
+			name: cat.genre,
+		};
+	});
 	return { movies, images, categories };
 };
 

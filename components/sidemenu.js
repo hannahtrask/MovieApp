@@ -4,7 +4,7 @@ import Modal from './modal';
 import MovieForm from './movieform';
 import { createMovie } from '../actions/index';
 
-const SideMenu = ({ categories, appName }) => {
+const SideMenu = ({ categories, appName, changeCategory, activeCategory }) => {
 	let modal = null;
 	const router = useRouter();
 
@@ -28,7 +28,11 @@ const SideMenu = ({ categories, appName }) => {
 			<div className='list-group'>
 				{categories &&
 					categories.map((category) => (
-						<a href='#' className='list-group-item' key={category.name}>
+						<a
+							href='#'
+							className={`list-group-item ${activeCategory === category.name ? 'active' : ''}`}
+							key={category.name}
+							onClick={() => changeCategory(category.name)}>
 							{category.name.toUpperCase()}
 						</a>
 					))}
