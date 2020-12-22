@@ -3,12 +3,14 @@ import Head from 'next/Head';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 
+import '../styles/index.scss';
+
 class MovieApp extends App {
 	// EXECUTE getInitialProps() here
 	static async getInitialProps(appCtx) {
-    // executing get initial props of page navigated to
-    // this is a universal service to bring props to a page
-    const appProps = await App.getInitialProps(appCtx);
+		// executing get initial props of page navigated to
+		// this is a universal service to bring props to a page
+		const appProps = await App.getInitialProps(appCtx);
 		return { ...appProps };
 	}
 
@@ -46,7 +48,7 @@ class MovieApp extends App {
 				<style jsx>
 					{`
 						.base-page {
-							padding-top: 80px;
+							padding-top: 100px;
 						}
 					`}
 				</style>

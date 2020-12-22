@@ -25,7 +25,7 @@ const Home = (props) => {
 	// 	}, []);
 
 	// this is to filter for movies associated with certain category
-	const [filter, setFilter] = useState('all movies');
+	const [filter, setFilter] = useState('all');
 
 	const changeCategory = (category) => {
 		// alert(`changing to ${category}`);
@@ -33,7 +33,7 @@ const Home = (props) => {
 	};
 
 	const filterMovies = (movies) => {
-		if (filter==='all movies'){
+		if (filter==='all'){
 			return movies
 		}
 		// filter array method
@@ -44,7 +44,7 @@ const Home = (props) => {
 	};
 
 	return (
-		<div>
+		<div className='home-page'>
 			<div className='container'>
 				{/* <button className='btn btn-dark' onClick={increment}>
 						Increment Number
