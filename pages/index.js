@@ -25,11 +25,22 @@ const Home = (props) => {
 	// 	}, []);
 
 	// this is to filter for movies associated with certain category
-	const [filter, setFilter] = useState('')
+	const [filter, setFilter] = useState('all movies');
 
 	const changeCategory = (category) => {
 		// alert(`changing to ${category}`);
-		setFilter(category)
+		setFilter(category);
+	};
+
+	const filterMovies = (movies) => {
+		if (filter==='all movies'){
+			return movies
+		}
+		// filter array method
+		// pass this function to the movie list
+		return movies.filter((movie) => {
+			return movie.genre && movie.genre.includes(filter);
+		});
 	};
 
 	return (
@@ -43,12 +54,19 @@ const Home = (props) => {
 					</button> */}
 				<div className='row'>
 					<div className='col-lg-3'>
-						<SideMenu appName={'Movie DB'} categories={props.categories} changeCategory={changeCategory} activeCategory={filter} />
+						<SideMenu
+							appName={'Movie DB'}
+							categories={props.categories}
+							changeCategory={changeCategory}
+							activeCategory={filter}
+						/>
 					</div>
 					<div className='col-lg-9'>
 						<Carousel images={props.images} />
+						<h2>{filter}</h2>
+						<br />
 						<div className='row'>
-							<MovieList movies={props.movies} />
+							<MovieList movies={filterMovies(props.movies)} />
 						</div>
 					</div>
 				</div>

@@ -9,6 +9,7 @@ const CATEGORY_DATA = [
 	{ id: '2', genre: 'action' },
 	{ id: '3', genre: 'adventure' },
 	{ id: '4', genre: 'historical' },
+	{ id: '5', genre: 'all' }
 ];
 
 // get categories function
