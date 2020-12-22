@@ -80,6 +80,25 @@ app.prepare().then(() => {
 		});
 	});
 
+	server.patch('/api/v1/movies/:id', (req, res) => {
+		const id = req.params.id;
+		const movie = req.body;
+		const movieIndex = moviesData.findIndex((movie) => movie.id === id);
+
+		moviesData[movieIndex] = movie;
+
+		const pathToFile = path.join(__dirname, filePath);
+		const stringifiedData = JSON.stringify(moviesData, null, 2);
+
+		// 3 vals, path, data itself, and callback func to handle error
+		fs.writeFile(pathToFile, stringifiedData, (err) => {
+			if (err) {
+				return res.status(422).send(err);
+			}
+			return res.json('Movie successfully updated :)');
+		});
+	});
+
 	const PORT = process.env.PORT || 3000;
 
 	server.use(handle).listen(PORT, (err) => {

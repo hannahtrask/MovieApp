@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const MovieForm = (props) => {
-	const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false)
+	const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
 	const [form, setForm] = useState({
 		name: '',
 		description: '',
@@ -145,7 +145,7 @@ const MovieForm = (props) => {
 				</select>
 			</div>
 			<button onClick={submitForm} type='button' className='btn btn-primary'>
-				Add
+				{props.submitButton || 'add'}
 			</button>
 		</form>
 	);

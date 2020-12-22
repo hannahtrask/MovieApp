@@ -16,6 +16,8 @@ const Movie = ({ movie }) => {
 				<p className='lead'>{movie.releaseYear}</p>
 				<hr className='my-4' />
 				<p>{movie.description}</p>
+                <br/>
+                <p>{movie.genre}</p>
 				<p className='lead'>
 					<button
 						onClick={() => handleDeleteMovie(id)}

@@ -1,6 +1,7 @@
 import React from 'react';
+import Router from 'next/router';
 import MovieForm from '../../../components/movieform';
-import { getMovieById } from '../../../actions';
+import { getMovieById, updateMovie } from '../../../actions';
 
 class EditMovie extends React.Component {
 	static getInitialProps({ query }) {
@@ -28,7 +29,13 @@ class EditMovie extends React.Component {
 		getMovieById(id).then((movie) => {
 			this.setState({ movie });
 		});
-	}
+    }
+    
+    handleUpdateMovie = (movie) => {
+		updateMovie(movie).then((updatedMovie) => {
+			Router.push(`/movies/${movie.id}`)
+		});
+	};
 
 	render() {
         //const { movie } = this.props
@@ -36,7 +43,11 @@ class EditMovie extends React.Component {
 			<div className='container'>
 				<h1>Edit Movie</h1>
 				{/* { JSON.stringify(this.state.movie) } */}
-                <MovieForm initialData ={this.state.movie} />
+				<MovieForm
+                    submitButton='update'
+					initialData={this.state.movie}
+					handleFormSubmit={this.handleUpdateMovie}
+				/>
 				{/* <MovieForm initialData={this.props} /> */}
 			</div>
 		);
