@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 const Movie = ({ movie }) => {
 	const router = useRouter();
 	const id = router.query.id;
-	console.log(id);
 
 	const handleDeleteMovie = (id) => {
 		deleteMovie(id).then(() => {});
@@ -24,6 +23,13 @@ const Movie = ({ movie }) => {
 						href='#'
 						role='button'>
 						delete movie from list
+					</button>
+					<button
+                        onClick={()=>{router.push(`/movies/${id}/edit`)}}
+						className='btn btn-warning btn-lg mr-1'
+						href='#'
+						role='button'>
+						edit movie
 					</button>
 				</p>
 			</div>

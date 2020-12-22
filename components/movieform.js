@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const MovieForm = ({ handleFormSubmit }) => {
+const MovieForm = (props) => {
+	const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false)
 	const [form, setForm] = useState({
 		name: '',
 		description: '',
@@ -9,6 +10,15 @@ const MovieForm = ({ handleFormSubmit }) => {
 		cover: '',
 		long: '',
 	});
+
+	//console.log('this is initial data', props.initialData)
+
+	useEffect(() => {
+		if (props.initialData) {
+			setForm(props.initialData);
+			setIsInitialDataLoaded(true);
+		}
+	}, [props.initialData]);
 
 	const handleChange = (e) => {
 		const name = e.target.name;
@@ -38,7 +48,7 @@ const MovieForm = ({ handleFormSubmit }) => {
 	const submitForm = () => {
 		// call a function to create a movie from props
 		// this if from sideMenu
-		handleFormSubmit({ ...form });
+		props.handleFormSubmit({ ...form });
 	};
 
 	return (
